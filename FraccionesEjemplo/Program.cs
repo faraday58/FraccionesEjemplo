@@ -127,13 +127,21 @@ namespace FraccionesEjemplo
             Console.WriteLine("La multiplicación de {0} * {1} es {2}",f1,f2,f3);
 
             //División de fracciones
-
+            int a = 0;
             do
             {
                 try
                 {
                     Console.WriteLine("Ingresa el numerador de f1: ");
                     int numerador = int.Parse(Console.ReadLine());
+                    if(numerador == 0)
+                    {
+                        a = 1;
+                    }
+                    else
+                    {
+                        a = 0;
+                    }
                     Console.WriteLine("Ingresa denominador de f1: ");
                     int denominador = int.Parse(Console.ReadLine());
                     if (denominador == 0)
@@ -179,8 +187,11 @@ namespace FraccionesEjemplo
                     int denominador = int.Parse(Console.ReadLine());
                     if (denominador == 0)
                     {
-                        string error = "El denominador no puede ser cero ";
-                        throw new ApplicationException(error);
+                        if (a == 0)
+                        {
+                            string error = "El denominador no puede ser cero ";
+                            throw new ApplicationException(error);
+                        }
                     }
 
                     f2 = new Fraccion(numerador, denominador);
